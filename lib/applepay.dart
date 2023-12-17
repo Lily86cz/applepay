@@ -69,17 +69,8 @@ class Applepay {
   
   //下单
   void applePayStartToPay(Map<String, dynamic> payInfo, int type) {
-    Map<String, dynamic> info = {
-      'description': payInfo["productDetails"].description,
-      'id': payInfo["productDetails"].id,
-      'currencyCode': payInfo["productDetails"].currencyCode,
-      'currencySymbol': payInfo["productDetails"].currencySymbol,
-      'price': payInfo["productDetails"].price,
-      'rawPrice': payInfo["productDetails"].rawPrice,
-      'payTransactionsId': payInfo,
-      'type': type, //1钱包2vip3前置付费
-    };
-    _methodChannel.invokeMethod(APPLEPAYSTARTTOPAY, info);
+   
+    _methodChannel.invokeMethod(APPLEPAYSTARTTOPAY, payInfo);
   }
   //恢复购买
   void restoreApplePay(Map<String, dynamic> restorePayInfo) {
