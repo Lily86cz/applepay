@@ -1,10 +1,10 @@
 import 'package:flutter/services.dart';
 abstract class ApplePayListener {
-  void showTost(String?tip);
-  void showLoading();
-  void hideLoading();
+  void applePayShowTost(String?tip);
+  void applePayShowLoading();
+  void applePayHideLoading();
   void applePaySuccess();
-  void hasNoRestorePay();
+  void applePayHasNoRestorePay();
 }
 
 
@@ -46,20 +46,20 @@ class Applepay {
   Future<dynamic> methodCallHandler(MethodCall call) async {
     if (call.method == TOAST) {
       //弹出提示
-      _applePayListener?.showTost(call.arguments);
+      _applePayListener?.applePayShowTost(call.arguments);
      
     } else if (call.method == SHOW_LOADING) {
       //加载loading
-       _applePayListener?.showLoading();
+       _applePayListener?.applePayShowLoading();
     } else if (call.method == HIDE_LOADING) {
       //隐藏loading
-     _applePayListener?.hideLoading();
+     _applePayListener?.applePayHideLoading();
     } else if (call.method == APPLEPAY) {
       //苹果支付成功回调
       _applePayListener?.applePaySuccess();
     } else if (call.method == HASNORESTORE) {
       //没有恢复购买处理
-     _applePayListener?.hasNoRestorePay();
+     _applePayListener?.applePayHasNoRestorePay();
     } else {}
   }
   //初始化苹果支付启动补偿机制或者调version接口更新域名
